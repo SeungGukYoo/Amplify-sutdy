@@ -8,6 +8,9 @@ export default async function signIn(payload: loginData) {
     const { username, password } = payload;
 
     const userInfo = await Auth.signIn(username, password);
+    const session = await Auth.currentSession();
+    // const jwt = session.getIdToken().getJwtToken();
+    // sessionStorage.setItem("sessionID", jwt);
     return userInfo;
   } catch (error) {
     console.log("error signing out: ", error);
